@@ -11,11 +11,15 @@
  * discard()
  * Moves a card from the top of the deck to the top of the discard pile. 
  * 
- * In addition, the GameModel should provide all the necessary state-querying services, including methods to check the state of the deck and the discard pile (empty or nor), 
+ * In addition, the GameModel should provide all the necessary state-querying services, 
+ * including methods to check the state of the deck and the discard pile (empty or nor), 
  * view the cards in the different stacks, etc. 
- * In particular, the GameModel class should provide a method getScore() that returns the cumulative number of cards in the four suit stacks. A score of 52 indicates a win.
+ * In particular, the GameModel class should provide a method getScore() that returns the cumulative number of cards 
+ * in the four suit stacks. A score of 52 indicates a win.
  */
 package comp303.solitaire.cards;
+
+import java.util.Stack;
 
 import comp303.solitaire.cards.Card.Suit;
 
@@ -36,17 +40,21 @@ public final class GameModel
 	private WorkingStack[] aWorkingStacks = new WorkingStack[NUMBEROFWORKINGSTACKS];
 	
 	/**
-	 * A private constructor for GameModel
+	 * A private constructor for GameModel.
+	 * Initializes the suit stacks and the working stacks
+	 * (Should) initialize the suit stacks in the following order:
+	 * 0. Clubs
+	 * 1. Diamonds
+	 * 2. Hearts
+	 * 3. Spades
 	 */
 	private GameModel()
 	{
-		// Initialize suit stacks
 		for( int i = 0; i < NUMBEROFSUITS; i++ )
 		{
-			aSuitStacks[i] = new SuitStack[Suit.value]; // FIXME
+			aSuitStacks[i] = new SuitStack(Suit.values()[i]);
 		}
 		
-		// Initialize working stacks
 		for( int i = 0; i < NUMBEROFWORKINGSTACKS; i++ )
 		{
 			aWorkingStacks[i] = new WorkingStack();
@@ -54,7 +62,7 @@ public final class GameModel
 	}
 	
 	/**
-	 * The static accessor method
+	 * The static accessor method.
 	 * @return	the unique instance of GameModel
 	 */
 	public static GameModel instance()
@@ -63,22 +71,50 @@ public final class GameModel
 	}
 	
 	/**
-	 * Initializes a new game by clearing all the working stacks, shuffling the deck, 
-	 * and placing cards on the working stack according to the rules of solitaire 
-	 * (one card on the first stack, two on the second, etc., with the top card of each stack visible).
+	 * Initializes a new game by 
+	 * 1. clearing all the working stacks
+	 * 2. shuffling the deck, and 
+	 * 3. placing cards on the working stack according to the rules of solitaire 
+	 * @pre aWorkingStacks.length == 7
+	 * @pre aSuitStacks.length    == 4
 	 */
 	void reset()
 	{
-		// Clear all working stacks
+		assert aWorkingStacks.length == NUMBEROFWORKINGSTACKS && aSuitStacks.length == NUMBEROFSUITS;
 		
+		// Clear all working stacks
+		for( WorkingStack stack : aWorkingStacks )
+		{
+			if( stack.size() > 0 )
+			{
+				while( stack.size() > 0 )
+				{
+					stack.pop();
+				}
+			}
+		}
 		
 		// Clear all suit stacks
-		
+		for( SuitStack stack : aSuitStacks )
+		{
+			if( stack.size() > 0 )
+			{
+				while( stack.size() > 0 )
+				{
+					stack.pop();
+				}
+			}
+		}
 		
 		// Shuffle the deck
-		
+		aDeck.shuffle();
 		
 		// Place cards on the working stack according to the rules of solitaire
+		// (one card on the first stack, two on the second, etc., with the top card of each stack visible).
+		for( int i = 0; i < NUMBEROFWORKINGSTACKS; i++ )
+		{
+			for( int j = 0; j <= )
+		}
 	}
 	
 	/**
