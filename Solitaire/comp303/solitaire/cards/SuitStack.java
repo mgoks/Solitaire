@@ -107,4 +107,12 @@ public class SuitStack
 		assert !isEmpty();
 		return aStack.pop();
 	}
+	
+	/**
+	 * @return	The number of cards in the suit stack.
+	 */
+	int size()
+	{
+		return aStack.size();
+	}
 }

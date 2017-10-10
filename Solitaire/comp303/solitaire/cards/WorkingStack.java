@@ -206,4 +206,12 @@ public class WorkingStack
 		aStack.push(pCard);
 		aVisible.add(pCard);
 	}
+	
+	/**
+	 * @return	The number of cards in the working stack.
+	 */
+	int size()
+	{
+		return aStack.size();
+	}
 }
