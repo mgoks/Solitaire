@@ -214,4 +214,13 @@ public class WorkingStack
 	{
 		return aStack.size();
 	}
+	
+	/**
+	 * @param pIndex		Index of the card
+	 * @return			The card at pIndex
+	 */
+	Card getCard(int pIndex)
+	{
+		return aStack.get(pIndex);
+	}
 }
