@@ -196,6 +196,7 @@ public final class GameModel
 	 * @pre 0 ≤ pIndex ≤ 6
 	 */
 	void viewWorkingStack( int pIndex )
+
 	{
 		assert 0 <= pIndex && pIndex < NUMBEROFWORKINGSTACKS;
 		
@@ -205,4 +206,11 @@ public final class GameModel
 			System.out.println(aStack.getCard(i).toString());
 		}
 	}
+
+	void autoplay()
+	{
+		
+	}
 }
+
+
