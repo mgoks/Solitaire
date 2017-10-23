@@ -45,6 +45,9 @@ public class Deck
 		shuffle();
 	}
 	
+	/**
+	 * Clears the deck and adds the 52 cards back to it
+	 */
 	private void reset()
 	{
 		aCards.clear();
